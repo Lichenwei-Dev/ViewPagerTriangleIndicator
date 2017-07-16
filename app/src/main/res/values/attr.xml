@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="visible_tab_num" format="integer" />
+    <declare-styleable name="ViewPagerTriangleIndicator">
+        <attr name="visible_tab_num" />
+    </declare-styleable>
+</resources>
