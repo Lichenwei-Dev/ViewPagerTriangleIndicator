@@ -1,11 +1,11 @@
 # ViewPagerTriangleIndicator
-    自定义ViewPager三角形指示器，博客讲解请见：[Android开发之自定义ViewPager三角形指示器](http://www.jianshu.com/p/ec0d4a73c970)
+ 自定义ViewPager三角形指示器，博客讲解请见：[Android开发之自定义ViewPager三角形指示器](http://www.jianshu.com/p/ec0d4a73c970)
 ## 效果图
  ![image](https://github.com/Lichenwei-Dev/ViewPagerTriangleIndicator/blob/master/screenshot/ViewPagerTriangleIndicator.gif)
 ## 用法
-1、复制ViewPagerTriangleIndicator类到项目里
-2、复制values文件夹下的attr.xml到项目里
-3、演示代码
+1、复制ViewPagerTriangleIndicator类到项目里<br>
+2、复制values文件夹下的attr.xml到项目里<br>
+3、演示代码<br>
 
 ```
     <com.lcw.viewpagertriangleindicator.ViewPagerTriangleIndicator
