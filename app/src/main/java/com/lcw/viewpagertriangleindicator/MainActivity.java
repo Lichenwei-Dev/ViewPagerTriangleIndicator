@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private ViewPagerTriangleIndicator mViewPagerTriangleIndicator;
 
-    private List<String> mTitles = Arrays.asList("新闻", "音乐", "游戏", "运动", "天气", "旅行");
+    private List<String> mTitles = Arrays.asList("新闻", "音乐", "游戏");
     private List<Fragment> mFragments = new ArrayList<Fragment>();
 
     @Override
