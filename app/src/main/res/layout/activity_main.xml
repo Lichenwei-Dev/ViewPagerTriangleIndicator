@@ -13,7 +13,7 @@
         android:layout_height="45dp"
         android:background="@color/colorAccent"
         android:orientation="horizontal"
-        lcw:visible_tab_num="4" />
+        lcw:visible_tab_num="3" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_main_content"

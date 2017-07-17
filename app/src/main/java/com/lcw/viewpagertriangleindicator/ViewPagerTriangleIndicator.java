@@ -32,6 +32,7 @@ public class ViewPagerTriangleIndicator extends LinearLayout {
     private int mTriangleHeigh;//三角形高度
     private int mTriangleInitPos;//三角形起始点
     private int mTriangleMoveWidth;//三角形移动偏移
+    private int DEFAULT_TRIANGLE_WIDTH = getScreenWidth() / 3 / 6;//最大三角形底边宽度
 
     private Paint mPaint;
     private Path mPath;
@@ -41,7 +42,8 @@ public class ViewPagerTriangleIndicator extends LinearLayout {
 
     private List<String> mTitles;//保存指示器标题
 
-    private ViewPager mViewPager;
+
+    private ViewPager mViewPager;//次有外部ViewPager引用
     private AddPageChangeListener mAddPageChangeListener;
 
     public ViewPagerTriangleIndicator(Context context) {
@@ -101,31 +103,33 @@ public class ViewPagerTriangleIndicator extends LinearLayout {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mTriangleWidth = w / mVisibleTabNum / 6;
-        mTriangleHeigh = mTriangleWidth / 2 - 12;
+        if (mTriangleWidth > DEFAULT_TRIANGLE_WIDTH) {
+            mTriangleWidth = DEFAULT_TRIANGLE_WIDTH;
+        }
+        mTriangleHeigh = mTriangleWidth / 2 - 8;
         mTriangleInitPos = w / mVisibleTabNum / 2 - mTriangleWidth / 2;
         initTriangle();
     }
 
-    /**
-     * 在XML布局加载完毕后回调
-     */
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        //根据可显示的Tab数量动态去改变Tab的宽度
-        int totalTabNum = getChildCount();
-        if (mVisibleTabNum != 0 && totalTabNum != 0) {
-            for (int i = 0; i < totalTabNum; i++) {
-                View view = getChildAt(i);
-                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) view.getLayoutParams();
-                layoutParams.weight = 0;
-                layoutParams.width = getScreenWidth() / mVisibleTabNum;
-                view.setLayoutParams(layoutParams);
+        /**
+         * 在XML布局加载完毕后回调
+         */
+        @Override
+        protected void onFinishInflate() {
+            super.onFinishInflate();
+            //根据可显示的Tab数量动态去改变Tab的宽度
+            int totalTabNum = getChildCount();
+            if (mVisibleTabNum != 0 && totalTabNum != 0) {
+                for (int i = 0; i < totalTabNum; i++) {
+                    View view = getChildAt(i);
+                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) view.getLayoutParams();
+                    layoutParams.weight = 0;
+                    layoutParams.width = getScreenWidth() / mVisibleTabNum;
+                    view.setLayoutParams(layoutParams);
+                }
+
             }
-
         }
-
-    }
 
     /**
      * 绘制子View
@@ -173,7 +177,7 @@ public class ViewPagerTriangleIndicator extends LinearLayout {
      *
      * @param titles
      */
-    protected void setPageTitle(List<String> titles) {
+    public void setPageTitle(List<String> titles) {
         this.mTitles = titles;
         if (mTitles != null && mTitles.size() > 0) {
             removeAllViews();
@@ -235,7 +239,7 @@ public class ViewPagerTriangleIndicator extends LinearLayout {
      *
      * @param viewPager
      */
-    protected void setViewPagerWithIndicator(ViewPager viewPager) {
+    public void setViewPagerWithIndicator(ViewPager viewPager) {
         this.mViewPager = viewPager;
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -271,7 +275,7 @@ public class ViewPagerTriangleIndicator extends LinearLayout {
      *
      * @param addPageChangeListener
      */
-    protected void addPageChangeListener(AddPageChangeListener addPageChangeListener) {
+    public void addPageChangeListener(AddPageChangeListener addPageChangeListener) {
         this.mAddPageChangeListener = addPageChangeListener;
     }
 
