@@ -1,5 +1,5 @@
 # ViewPagerTriangleIndicator
- 自定义ViewPager三角形指示器，博客讲解请见：[Android开发之自定义ViewPager三角形指示器](http://www.jianshu.com/p/ec0d4a73c970)
+ 自定义ViewPager三角形指示器，博客讲解请见：[Android开发之自定义ViewPager三角形指示器](http://www.jianshu.com/p/51c2557a241b)
 ## 效果图
  ![image](https://github.com/Lichenwei-Dev/ViewPagerTriangleIndicator/blob/master/screenshot/ViewPagerTriangleIndicator.gif)
 ## 用法
